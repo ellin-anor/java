@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -79,7 +80,7 @@ public class HomeWorkStrings {
         Перед завершением программы, вывести получившийся массив в консоль
         */
 
-        String[] inputWords = new String[10];
+        String[] inputWords = new String[4];
         Scanner inWord = new Scanner(System.in);
         // цикл для добавления введённых пользователем слов в массив
         for (int i = 0; i < inputWords.length; i++) {
@@ -103,5 +104,28 @@ public class HomeWorkStrings {
         }
 
         System.out.println(Arrays.toString(inputWords));
+
+        System.out.println(IsPalindrom("Крошка енот"));
+
     }
+
+    private static boolean IsPalindrom(String checkWord) {
+    /*
+    Написать функцию, которая проверяет, является ли строка палиндромом.
+Палиндром — это число, буквосочетание, слово или текст, которые одинаково читаются по буквам или по словам как слева направо, так и справа налево.
+Например, 202 - палиндром / fafaf - палиндром / а роза упала на лапу Азора - палиндром
+     */
+
+        checkWord = checkWord.replaceAll(" ", "").toLowerCase(); // убираем пробелы
+        char[] charsCheckWord = checkWord.toCharArray(); // преобразуем строку в массив
+        for (int i = 0; i < charsCheckWord.length; i++) {
+            if (charsCheckWord[i] != charsCheckWord[charsCheckWord.length - i - 1]) { // если текущий символ не равен символу (длина - индекс -1)
+                return false; // возвращаем false
+            }
+        }
+
+        return true; // если символы равны в течение всего цикла, возвращаем true
+    }
+
+
 }
